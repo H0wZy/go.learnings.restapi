@@ -3,4 +3,16 @@ GET https://examples.http-client.intellij.net/get
     ?generated-in=GoLand
 
 ### GET request to local server
-GET http://localhost:8080/ping
+GET http://localhost:8080/api/v1/opening
+
+### POST request to local server
+POST http://localhost:8080/api/v1/opening
+
+###
+DELETE http://localhost:8080/api/v1/opening
+
+###
+PUT http://localhost:8080/api/v1/opening
+
+###
+GET http://localhost:8080/api/v1/openings
