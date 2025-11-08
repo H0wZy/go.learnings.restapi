@@ -13,7 +13,7 @@ func main() {
 	logger = config.GetLogger("main")
 	err := config.InitDb()
 	if err != nil {
-		logger.Infof("config init error: %v", err)
+		logger.Errorf("config init error: %v", err)
 		return
 	}
 	router.Initialize()
