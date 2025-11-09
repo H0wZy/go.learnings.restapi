@@ -1,7 +1,4 @@
-### GET request to local server
-GET http://localhost:8080/api/v1/opening
-
-### CREATE request opening
+### CREATE opening
 POST http://localhost:8080/api/v1/opening
 Content-Type: application/json
 
@@ -14,11 +11,24 @@ Content-Type: application/json
   "salary": 30000
 }
 
+### GET opening by id
+GET http://localhost:8080/api/v1/opening?id=3
+
+### GET list of all openings
+GET http://localhost:8080/api/v1/openings
+
+### UPDATE request opening by id
+PATCH http://localhost:8080/api/v1/opening?id=4
+Content-Type: application/json
+
+{
+  "role": "Teste",
+  "company": "Tech Innovators Inc.",
+  "location": "Londrina, PR",
+  "remote": true,
+  "link": "https://techinnovators.example.com/careers/12345",
+  "salary": 30000
+}
+
 ### DELETE request opening
 DELETE http://localhost:8080/api/v1/opening?id=3
-
-###
-PUT http://localhost:8080/api/v1/opening
-
-###
-GET http://localhost:8080/api/v1/openings
