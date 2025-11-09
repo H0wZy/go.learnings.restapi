@@ -2,8 +2,11 @@
 
 APP_NAME=go.learnings.restapi
 
-default: run
+default: runwdocs
 run:
+	@go run main.go
+runwdocs:
+	@swag init
 	@go run main.go
 build:
 	@go build -o $(APP_NAME) main.go
