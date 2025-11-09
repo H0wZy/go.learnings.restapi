@@ -54,3 +54,9 @@ type ListOpeningsResponse struct {
 	Success bool                      `json:"success"`
 	Data    []schemas.OpeningResponse `json:"data"`
 }
+
+type UpdateOpeningResponse struct {
+	Message string                  `json:"message"`
+	Success bool                    `json:"success"`
+	Data    schemas.OpeningResponse `json:"data"`
+}

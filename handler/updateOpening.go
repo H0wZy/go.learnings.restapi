@@ -8,16 +8,34 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// UpdateOpeningHandler
+// @Summary UpdateOpeningHandler
+// @Description Update a job opening
+// @Tags Openings
+// @Accept json
+// @Produce json
+// @Param id query string true "Opening identification"
+// @Param opening body UpdateOpeningRequest true "Opening data to Update"
+// @Success 200 {object} UpdateOpeningResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /opening [patch]
 func UpdateOpeningHandler(ctx *gin.Context) {
 	request := UpdateOpeningRequest{}
 
-	ctx.BindJSON(&request)
+	if err := ctx.BindJSON(&request); err != nil {
+		logger.Errorf("error binding request: %v", err.Error())
+		responseError(ctx, http.StatusBadRequest, false, err.Error())
+		return
+	}
 
 	if err := request.Validate(); err != nil {
 		logger.Errorf("error validating request: %v", err.Error())
 		responseError(ctx, http.StatusBadRequest, false, err.Error())
 		return
 	}
+
 	id := ctx.Query("id")
 
 	if id == "" {
