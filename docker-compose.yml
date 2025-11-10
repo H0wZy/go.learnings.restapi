@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        - GO_VERSION=${GO_VERSION}
+        - PORT=${PORT}
+    image: ${IMAGE_NAME}:${IMAGE_TAG}
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - GIN_MODE=${GIN_MODE}
+      - PORT=${PORT}
+    volumes:
+      - ./db:/app/db
+    restart: unless-stopped
